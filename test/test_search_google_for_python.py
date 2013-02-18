@@ -5,33 +5,30 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 
-class PythonSiteSearch(base_test.BaseTest):
+class GoogleSearch(base_test.BaseTest):
 
-    def test_search_python(self):
+    def test_search_google(self):
         driver = self.driver
-        driver.get("http://python.org")
+        driver.get("http://www.google.ro/")
         time.sleep(5)
 
-
-        # Search for Selenium
+        # Search for Python
         search_field = driver.find_element_by_name('q')
-        search_field.send_keys("Selenium")
+        search_field.send_keys("Python")
         search_field.send_keys(Keys.RETURN)
         time.sleep(3)
 
         # Click on the first result
-        first_result = driver.find_element_by_partial_link_text("Python Job Board")
+        first_result = driver.find_element_by_partial_link_text("Official Website")
         first_result.click()
         time.sleep(3)
+        print "done test - search on google"
 
-        # Get RSS Feed
+        # Assert text is present on page
 	try:
-		rss_feed = driver.find_element_by_link_text("RSS feed")
-		rss_feed.click()
+		assert "Python" in driver.title
 	except:
 		assert 0, "You must have gone to the wrong page!"
-
-	print "done my test"
     
 
 if __name__ == "__main__":
