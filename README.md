@@ -1,2 +1,1 @@
-phantomjs_tests
-===============
+Basic tests with PhantomJS & GhostDriver

@@ -1,0 +1,13 @@
+language: python
+
+python:
+ - "2.7"
+
+install: "pip install -r requirements.txt --use-mirrors"
+
+script:
+ - "echo success"
+ - "python -m unittest discover -s test --pattern=test*.py"
+
+before_script:
+ - "python test/start_ghostdriver.py"
